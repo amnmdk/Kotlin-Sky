@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Kotlin-Sky</string>
+    <string name="weather_icon">Icône météo</string>
+    <string name="remove_favorite">Supprimer des favoris</string>
+    <string name="settings_title">Paramètres</string>
+    <string name="unit_toggle">Afficher la température en Fahrenheit</string>
+    <string name="dark_mode_toggle">Activer le mode sombre</string>
+    <string name="add_favorite">Ajouter aux favoris</string>
+    <string name="logo_content_description">Logo de l\'application</string>
+    <string name="empty_icon_description">Icône d\'information vide</string>
+    <string name="empty_message">Aucune ville favorite pour l’instant</string>
+    <string name="weather_list_description">Liste des villes avec leur météo</string>
+    <string name="weather_icon_description">Icône météo</string>
+    <string name="favorite_button">Bouton favoris</string>
+    <string name="delete_button">Supprimer la ville</string>
+    <string name="search">Rechercher</string>
+    <string name="enter_city">Entrez une ville</string>
+    <string name="hint_enter_city">Entrez une ville</string>
+    <string name="search_results_list">Liste des résultats de recherche</string>
+    <string name="city_placeholder">Nom de la ville</string>
+    <string name="temp_placeholder">12°C</string>
+    <string name="weather_description_placeholder">ciel dégagé</string>
+    <string name="unit_label">Unité de température</string>
+    <string name="switch_unit_label">Utiliser Fahrenheit</string>
+    <string name="theme_label">Thème de l\'application</string>
+    <string name="switch_theme_label">Activer le mode sombre</string>
+</resources>

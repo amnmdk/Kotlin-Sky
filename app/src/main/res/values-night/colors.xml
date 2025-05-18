@@ -1,0 +1,18 @@
+<resources>
+    <!-- Palette foncée -->
+    <color name="primary_background">#222831</color>
+    <color name="secondary_background">#31363F</color>
+    <color name="accent_blue">#76ABAE</color>
+    <color name="light_blue">#EEEEEE</color>
+
+
+    <color name="gray">#BDBDBD</color>
+    <color name="black">#FFFFFF</color>
+    <color name="white">#000000</color>
+    <color name="red">#BC3131</color>
+    <color name="teal">#03DAC5</color>
+
+    <color name="darkText">#EEEEEE</color>
+    <color name="darkGrayText">#CCCCCC</color>
+    <color name="lightBackground">#31363F</color>
+</resources>

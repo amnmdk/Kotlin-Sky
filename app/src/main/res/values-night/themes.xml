@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.KotlinSky" parent="Theme.Material3.DayNight">
+
+    <!-- Couleurs principales en mode nuit -->
+        <item name="colorPrimary">@color/accentBlue</item>
+        <item name="colorPrimaryVariant">@color/soft_blue</item>
+        <item name="colorOnPrimary">@android:color/black</item>
+
+        <!-- Fond principal -->
+        <item name="android:windowBackground">@color/primary_background</item>
+
+        <!-- Barre de statut et navigation -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/accentBlue</item>
+        <item name="android:navigationBarColor">@color/accentBlue</item>
+    </style>
+</resources>
