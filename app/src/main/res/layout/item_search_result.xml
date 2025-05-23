@@ -1,59 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardElevation="4dp"
-    app:cardCornerRadius="12dp">
+    android:layout_margin="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center_vertical">
+        android:padding="12dp">
 
         <ImageView
             android:id="@+id/imageWeatherSearch"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:contentDescription="@string/weather_icon_description"
-            android:layout_marginEnd="16dp"
-            app:tint="@color/darkText"
-            android:src="@drawable/ic_cloud_off" />
+            android:contentDescription="@string/weather_icon"
+            android:scaleType="centerCrop" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
 
             <TextView
                 android:id="@+id/textCityName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/city_placeholder"
-                android:textSize="18sp"
-                android:textColor="@color/darkText" />
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:ellipsize="end"
+                android:maxLines="1"
+                tools:text="Clermont-Ferrand, France" />
 
             <TextView
                 android:id="@+id/textTemperature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/temp_placeholder"
                 android:textSize="14sp"
-                android:textColor="@color/darkGrayText" />
+                tools:text="18°C" />
         </LinearLayout>
 
         <ImageButton
             android:id="@+id/buttonFavorite"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_favorite_border"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/favorite_button"
-            android:layout_marginStart="8dp"
-            android:padding="8dp" />
+            android:contentDescription="@string/favorite_icon"
+            android:padding="4dp"
+            app:tint="@color/red" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

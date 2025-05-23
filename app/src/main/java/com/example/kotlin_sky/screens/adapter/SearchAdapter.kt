@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_sky.R
 import com.example.kotlin_sky.data.FavoriteManager
 import com.example.kotlin_sky.model.WeatherResponse
+import com.squareup.picasso.Picasso
 
 class SearchAdapter(
     private val results: List<WeatherResponse>,
@@ -18,6 +19,12 @@ class SearchAdapter(
 ) : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
 
     private lateinit var context: Context
+    private var onItemClickListener: ((WeatherResponse) -> Unit)? = null
+
+    // Set click listener for items
+    fun setOnItemClickListener(listener: (WeatherResponse) -> Unit) {
+        onItemClickListener = listener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         context = parent.context
@@ -31,22 +38,22 @@ class SearchAdapter(
         holder.textCityName.text = item.name
         holder.textTemperature.text = "${item.main.temp.toInt()}°"
 
-        // Icône météo (optionnel)
-        val iconCode = item.weather.firstOrNull()?.icon
-        val iconResId = context.resources.getIdentifier("icon_$iconCode", "drawable", context.packageName)
-        holder.imageWeather.setImageResource(
-            if (iconResId != 0) iconResId else R.drawable.ic_cloud_off
-        )
+        // Load the colorful weather icon
+        val iconUrl = "https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"
+        Picasso.get().load(iconUrl).into(holder.imageWeather)
 
-        // Cœur : favori ou non
         val isFav = FavoriteManager.isFavorite(context, item.name)
         val heartIcon = if (isFav) R.drawable.ic_favorite else R.drawable.ic_favorite_border
         holder.buttonFavorite.setImageResource(heartIcon)
 
-        // Click sur cœur
         holder.buttonFavorite.setOnClickListener {
             onFavoriteClick(item.name)
             notifyItemChanged(position)
+        }
+
+        // Set item click listener for the whole card
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.invoke(item)
         }
     }
 

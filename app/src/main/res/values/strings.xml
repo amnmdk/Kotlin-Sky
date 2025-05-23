@@ -1,12 +1,14 @@
 <resources>
-    <string name="app_name">Kotlin-Sky</string>
+    <string name="app_name">Kotlin Sky</string>
     <string name="weather_icon">Icône météo</string>
+    <string name="return_button">Retour</string>
+    <string name="error_message">Erreur : %1$s</string>
     <string name="remove_favorite">Supprimer des favoris</string>
     <string name="settings_title">Paramètres</string>
     <string name="unit_toggle">Afficher la température en Fahrenheit</string>
     <string name="dark_mode_toggle">Activer le mode sombre</string>
     <string name="add_favorite">Ajouter aux favoris</string>
-    <string name="logo_content_description">Logo de l\'application</string>
+    <string name="logo_content_description">App Logo</string>
     <string name="empty_icon_description">Icône d\'information vide</string>
     <string name="empty_message">Aucune ville favorite pour l’instant</string>
     <string name="weather_list_description">Liste des villes avec leur météo</string>
@@ -24,4 +26,7 @@
     <string name="switch_unit_label">Utiliser Fahrenheit</string>
     <string name="theme_label">Thème de l\'application</string>
     <string name="switch_theme_label">Activer le mode sombre</string>
+    <string name="delete_favorite">Delete favorite</string>
+    <string name="favorite_icon">Favorite icon</string>
+    <string name="enter_city_prompt">Veuillez entrer un nom de ville</string>
 </resources>

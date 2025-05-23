@@ -23,16 +23,16 @@ object FavoriteManager {
 
     fun addFavorite(context: Context, city: String) {
         val prefs = getPrefs(context)
-        val favorites = getFavorites(context)
+        val favorites = getFavorites(context).toMutableSet() // Create a mutable copy
         favorites.add(city)
-        prefs.edit().putStringSet(FAVORITES_KEY, favorites).apply()
+        prefs.edit().putStringSet(FAVORITES_KEY, favorites).apply() // Save the updated set
     }
 
     fun removeFavorite(context: Context, city: String) {
         val prefs = getPrefs(context)
-        val favorites = getFavorites(context)
+        val favorites = getFavorites(context).toMutableSet() // Create a mutable copy
         favorites.remove(city)
-        prefs.edit().putStringSet(FAVORITES_KEY, favorites).apply()
+        prefs.edit().putStringSet(FAVORITES_KEY, favorites).apply() // Save the updated set
     }
 
     fun toggleFavorite(context: Context, city: String): Boolean {

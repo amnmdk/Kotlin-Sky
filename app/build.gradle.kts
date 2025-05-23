@@ -77,7 +77,8 @@ dependencies {
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.cardview:cardview:1.0.0")
 
-
+    // Glide (pour le chargement et l'affichage d'images)
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
     // Tests
     testImplementation(libs.junit)

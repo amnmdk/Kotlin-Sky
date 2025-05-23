@@ -1,6 +1,7 @@
 package com.example.kotlin_sky.screens.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_sky.R
 import com.example.kotlin_sky.model.WeatherResponse
+import com.example.kotlin_sky.screens.WeatherDetailActivity
 import com.squareup.picasso.Picasso
 
 class WeatherAdapter(
@@ -33,21 +35,19 @@ class WeatherAdapter(
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
         val item = data[position]
         val context = holder.itemView.context
-        val prefs = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
-        val isFahrenheit = prefs.getBoolean("isFahrenheit", false)
-
-        val temperature = if (isFahrenheit) {
-            val fahrenheitTemp = item.main.temp * 9 / 5 + 32
-            String.format("%.1f°F", fahrenheitTemp)
-        } else {
-            String.format("%.1f°C", item.main.temp)
-        }
 
         holder.textCity.text = "${item.name}, ${item.sys.country}"
-        holder.textTemp.text = "$temperature - ${item.weather[0].description}"
+        holder.textTemp.text = "${item.main.temp}°C - ${item.weather[0].description}"
 
+        // Load the weather icon
         val iconUrl = "https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"
         Picasso.get().load(iconUrl).into(holder.imageWeather)
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, WeatherDetailActivity::class.java)
+            intent.putExtra("city_name", item.name)
+            context.startActivity(intent)
+        }
 
         holder.deleteBtn.setOnClickListener {
             onDeleteFavoriteClick(item.name)

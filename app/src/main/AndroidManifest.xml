@@ -39,5 +39,11 @@
             android:label="Rechercher une ville"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Écran de détails météo -->
+        <activity
+            android:name=".screens.WeatherDetailActivity"
+            android:exported="true"
+            android:theme="@style/Theme.KotlinSky.NoActionBar" />
+
     </application>
 </manifest>
