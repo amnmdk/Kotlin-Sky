@@ -8,7 +8,6 @@
     android:background="@color/primary_background"
     tools:context=".screens.HomeFragment">
 
-    <!-- Logo header -->
     <ImageView
         android:id="@+id/headerLogo"
         android:layout_width="48dp"
@@ -20,7 +19,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
 
-    <!-- Liste des météos -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewWeather"
         android:layout_width="0dp"
@@ -34,7 +32,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:listitem="@layout/item_city_weather" />
 
-    <!-- Layout vide -->
     <LinearLayout
         android:id="@+id/emptyLayout"
         android:layout_width="0dp"

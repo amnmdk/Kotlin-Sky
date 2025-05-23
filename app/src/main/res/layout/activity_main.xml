@@ -8,7 +8,6 @@
     android:background="@color/primary_background"
     tools:context=".screens.MainActivity">
 
-    <!-- Conteneur de fragments -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment_container"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -22,7 +21,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout="@layout/fragment_home" />
 
-    <!-- Bottom Navigation (visible uniquement si écran <600dp de haut) -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
