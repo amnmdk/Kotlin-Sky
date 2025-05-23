@@ -38,7 +38,6 @@ class SearchAdapter(
         holder.textCityName.text = item.name
         holder.textTemperature.text = "${item.main.temp.toInt()}°"
 
-        // Load the colorful weather icon
         val iconUrl = "https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"
         Picasso.get().load(iconUrl).into(holder.imageWeather)
 
@@ -51,7 +50,6 @@ class SearchAdapter(
             notifyItemChanged(position)
         }
 
-        // Set item click listener for the whole card
         holder.itemView.setOnClickListener {
             onItemClickListener?.invoke(item)
         }

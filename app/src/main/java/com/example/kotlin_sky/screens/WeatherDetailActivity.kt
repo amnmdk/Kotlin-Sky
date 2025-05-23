@@ -32,7 +32,6 @@ class WeatherDetailActivity : AppCompatActivity() {
     private lateinit var weatherIcon: ImageView
     private lateinit var backButton: ImageButton
     
-    // TextViews for weather details
     private lateinit var tempTextView: TextView
     private lateinit var feelsLikeTextView: TextView
     private lateinit var minMaxTextView: TextView
@@ -51,14 +50,12 @@ class WeatherDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather_detail)
         
-        // Enable back button in action bar
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.title = ""
         
         initializeViews()
         
-        // Handle back button click
         backButton.setOnClickListener {
             finish()
         }
@@ -90,7 +87,6 @@ class WeatherDetailActivity : AppCompatActivity() {
         weatherIcon = findViewById(R.id.weatherIcon)
         backButton = findViewById(R.id.backButton)
         
-        // Initialize all detail text views
         tempTextView = findViewById(R.id.temperatureTextView)
         feelsLikeTextView = findViewById(R.id.feelsLikeTextView)
         minMaxTextView = findViewById(R.id.minMaxTextView)
@@ -104,7 +100,6 @@ class WeatherDetailActivity : AppCompatActivity() {
         sunsetTextView = findViewById(R.id.sunsetTextView)
     }
     
-    // Handle back button click
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             finish()
@@ -117,15 +112,13 @@ class WeatherDetailActivity : AppCompatActivity() {
         val tempUnit = if (isFahrenheit) "°F" else "°C"
         val speedUnit = if (isFahrenheit) "mph" else "m/s"
         
-        // Load weather icon from OpenWeatherMap API
+        // OpenWeatherMap API
         val iconCode = weather.weather[0].icon
         val iconUrl = "https://openweathermap.org/img/wn/${iconCode}@2x.png"
         Picasso.get().load(iconUrl).into(weatherIcon)
         
-        // Set city name and country
         cityNameTextView.text = "${weather.name}, ${weather.sys.country}"
         
-        // Set all detail texts with bold and underlined labels
         setDetailText(tempTextView, "Température: ", "${weather.main.temp}$tempUnit")
         setDetailText(feelsLikeTextView, "Ressenti: ", "${weather.main.feels_like}$tempUnit")
         setDetailText(minMaxTextView, "Min/Max: ", "${weather.main.temp_min}$tempUnit / ${weather.main.temp_max}$tempUnit")
@@ -142,7 +135,6 @@ class WeatherDetailActivity : AppCompatActivity() {
     private fun setDetailText(textView: TextView, label: String, value: String) {
         val spannableString = SpannableString(label + value)
         
-        // Make label bold and underlined
         spannableString.setSpan(
             StyleSpan(Typeface.BOLD), 
             0, 
@@ -157,7 +149,6 @@ class WeatherDetailActivity : AppCompatActivity() {
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
         
-        // Add color to headers based on their meaning
         when {
             label.contains("Température") -> spannableString.setSpan(ForegroundColorSpan(Color.RED), 0, label.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
             label.contains("Ressenti") -> spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(this, R.color.primary)), 0, label.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)

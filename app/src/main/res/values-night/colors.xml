@@ -1,7 +1,7 @@
 <resources>
-    <color name="primary">#BB86FC</color> <!-- Primary color for dark mode -->
-    <color name="primaryVariant">#3700B3</color> <!-- Darker variant of primary -->
-    <color name="onPrimary">#000000</color> <!-- Text color on primary background -->
+    <color name="primary">#BB86FC</color>
+    <color name="primaryVariant">#3700B3</color>
+    <color name="onPrimary">#000000</color>
 
     <color name="primary_background">#121212</color>
     <color name="secondary_background">#1E1E1E</color>
@@ -16,7 +16,6 @@
     <color name="red">#BC3131</color>
     <color name="teal">#009688</color>
     
-    <!-- Added missing colors with slightly darker shades for night mode -->
     <color name="red_500">#D32F2F</color>
     <color name="orange_500">#F57C00</color>
     <color name="purple_500">#7B1FA2</color>

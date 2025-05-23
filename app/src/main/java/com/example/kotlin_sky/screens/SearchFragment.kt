@@ -43,12 +43,10 @@ class SearchFragment : Fragment() {
         searchBtn = view.findViewById(R.id.buttonSearch)
         recyclerView = view.findViewById(R.id.recyclerViewResults)
 
-        // Setup autocomplete adapter
         autoCompleteAdapter = CityAutoCompleteAdapter(requireContext(), apiKey)
         searchInput.setAdapter(autoCompleteAdapter)
-        searchInput.threshold = 2 // Start showing suggestions after 2 characters
+        searchInput.threshold = 2
 
-        // Setup search results adapter
         adapter = SearchAdapter(results) { city ->
             val isFav = FavoriteManager.isFavorite(requireContext(), city)
             if (isFav) {
@@ -61,14 +59,11 @@ class SearchFragment : Fragment() {
             adapter.notifyDataSetChanged()
         }
 
-        // Add item click listener to show detail view
         adapter.setOnItemClickListener { weatherResponse ->
-            // Navigate to detail activity with the city name
             val intent = Intent(requireContext(), WeatherDetailActivity::class.java)
             intent.putExtra("city_name", weatherResponse.name)
             startActivity(intent)
             
-            // Optional: Add a log to verify the click is working
             Log.d("SearchFragment", "Navigating to details for: ${weatherResponse.name}")
         }
 
@@ -78,7 +73,6 @@ class SearchFragment : Fragment() {
         searchBtn.setOnClickListener {
             val fullCityText = searchInput.text.toString().trim()
             if (fullCityText.isNotBlank()) {
-                // Extract just the city name if it's from autocomplete
                 val cityName = if (fullCityText.contains(",")) {
                     fullCityText.split(",")[0].trim()
                 } else {
@@ -101,7 +95,6 @@ class SearchFragment : Fragment() {
     }
 
     private fun searchCity(city: String) {
-        // Log the city name for debugging
         Log.d("SearchFragment", "Searching for city: $city")
         
         CoroutineScope(Dispatchers.IO).launch {
@@ -110,12 +103,11 @@ class SearchFragment : Fragment() {
                 val useFahrenheit = prefs.getBoolean("isFahrenheit", false)
                 val unit = if (useFahrenheit) "imperial" else "metric"
 
-                // Add language parameter explicitly for French
                 val response = ApiClient.weatherApi.getWeatherByCity(
                     cityName = city,
                     apiKey = apiKey,
                     units = unit,
-                    language = "fr"  // Explicitly request French
+                    language = "fr"
                 )
 
                 withContext(Dispatchers.Main) {

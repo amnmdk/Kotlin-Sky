@@ -44,6 +44,5 @@
             android:name=".screens.WeatherDetailActivity"
             android:exported="true"
             android:theme="@style/Theme.KotlinSky.NoActionBar" />
-
     </application>
 </manifest>

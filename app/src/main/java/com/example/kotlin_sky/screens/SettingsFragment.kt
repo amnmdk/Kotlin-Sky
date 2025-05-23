@@ -26,11 +26,10 @@ class SettingsFragment : Fragment() {
 
         val prefs = requireContext().getSharedPreferences("settings", Context.MODE_PRIVATE)
 
-        // Applique les valeurs enregistrées
         switchUnit.isChecked = prefs.getBoolean("isFahrenheit", false)
         switchTheme.isChecked = prefs.getBoolean("darkMode", false)
 
-        // Gestion du switch des unités
+        // Gestion du switch des unités (degrés ou fahrenheit)
         switchUnit.setOnCheckedChangeListener { _, isChecked ->
             prefs.edit().putBoolean("isFahrenheit", isChecked).apply()
         }

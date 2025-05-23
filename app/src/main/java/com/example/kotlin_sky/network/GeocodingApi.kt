@@ -10,6 +10,6 @@ interface GeocodingApi {
         @Query("q") cityPrefix: String,
         @Query("limit") limit: Int = 5,
         @Query("appid") apiKey: String,
-        @Query("lang") language: String = "fr"  // Default to French
+        @Query("lang") language: String = "fr"
     ): List<GeocodingResponse>
 }

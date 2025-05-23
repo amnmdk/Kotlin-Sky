@@ -32,34 +32,28 @@ class CityAutoCompleteAdapter(
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 if (constraint != null && constraint.length >= 2) {
-                    // Cancel any ongoing job
                     searchJob?.cancel()
-                    
-                    // Start a new search
+
+                    //Lance une nouvelle recherche
                     searchJob = coroutineScope.launch {
                         try {
                             val query = constraint.toString().trim()
                             Log.d("CityAutoComplete", "Searching for: $query")
                             
                             val suggestions = withContext(Dispatchers.IO) {
-                                // Include lang=fr parameter for French results when possible
                                 ApiClient.geoApi.getCitiesByPrefix(query, limit = 10, apiKey = apiKey, "fr")
                             }
-                            
-                            // Clear previous suggestions
                             clear()
                             
-                            // Add new suggestions - filter out duplicates
+                            // ajouter des nouvelles suggestions et filtrer
                             if (suggestions.isNotEmpty()) {
                                 val uniqueCities = suggestions
-                                    .distinctBy { it.name to it.country } // Remove exact duplicates
-                                    .take(5) // Only take top 5 results
+                                    .distinctBy { it.name to it.country }
+                                    .take(5)
                                     .map { city ->
-                                        // Use French country name if available
                                         val countryCode = city.country
                                         val countryName = getCountryNameInFrench(countryCode)
                                         
-                                        // Format suggestion as "City, Country" without state/region
                                         "${city.name}, ${countryName}"
                                     }
                                 
@@ -78,18 +72,15 @@ class CityAutoCompleteAdapter(
         }
     }
 
-    // Get French country names from country codes
     private fun getCountryNameInFrench(countryCode: String): String {
         val frenchLocale = Locale("fr", "FR")
         return Locale("", countryCode).getDisplayCountry(frenchLocale)
     }
 
-    // Clean up resources when adapter is no longer used
     fun cleanup() {
         coroutineScope.cancel()
     }
     
-    // Helper method to extract just the city name from a formatted suggestion
     fun extractCityName(suggestion: String): String {
         return suggestion.split(",")[0].trim()
     }

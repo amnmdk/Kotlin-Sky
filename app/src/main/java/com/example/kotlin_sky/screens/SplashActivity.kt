@@ -27,15 +27,14 @@ class SplashActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
 
-        // ✅ Supprimer le mode plein écran
         window.clearFlags(android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-        // ✅ Forcer l’affichage de la status bar (icônes foncées si fond clair)
+        //Forcer l’affichage de la status bar (icônes foncées si fond clair)
         if (!isDarkMode && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
 
-        // ✅ Demander permission notifications (Android 13+)
+        //Demander permission notifications
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), 100)
         }

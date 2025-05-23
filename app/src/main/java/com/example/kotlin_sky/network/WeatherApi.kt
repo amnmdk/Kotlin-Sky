@@ -10,7 +10,7 @@ interface WeatherApi {
         @Query("q") cityName: String,
         @Query("appid") apiKey: String,
         @Query("units") units: String = "metric",
-        @Query("lang") language: String = "fr"  // Default to French
+        @Query("lang") language: String = "fr"
     ): WeatherResponse
 
     @GET("weather")
@@ -19,6 +19,6 @@ interface WeatherApi {
         @Query("lon") lon: Double,
         @Query("appid") apiKey: String,
         @Query("units") units: String = "metric",
-        @Query("lang") language: String = "fr"  // Default to French
+        @Query("lang") language: String = "fr"
     ): WeatherResponse
 }

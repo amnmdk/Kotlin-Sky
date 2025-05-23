@@ -39,7 +39,6 @@ class WeatherAdapter(
         holder.textCity.text = "${item.name}, ${item.sys.country}"
         holder.textTemp.text = "${item.main.temp}°C - ${item.weather[0].description}"
 
-        // Load the weather icon
         val iconUrl = "https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"
         Picasso.get().load(iconUrl).into(holder.imageWeather)
 

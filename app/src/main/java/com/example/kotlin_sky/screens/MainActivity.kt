@@ -12,7 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Appliquer le mode sombre ou clair avant tout
+        // Appliquer le mode sombre ou clair
         val prefs = getSharedPreferences("settings", MODE_PRIVATE)
         val isDarkMode = prefs.getBoolean("darkMode", false)
 
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
 
-        // ✅ Forcer l’affichage de la status bar + icônes foncées si thème clair
+        // Forcer l’affichage de la status bar et icônes foncées si thème clair
         if (!isDarkMode) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 window.decorView.systemUiVisibility =
@@ -32,12 +32,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // ❌ Masquer la barre d'action (titre "Kotlin-Sky")
+        // Masquer la barre d'action
         supportActionBar?.hide()
 
         setContentView(R.layout.activity_main)
 
-        // Navigation
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
         val navController = navHostFragment.navController
